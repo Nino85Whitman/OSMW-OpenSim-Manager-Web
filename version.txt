@@ -22,9 +22,14 @@ Gestion des Utilisateurs:
 ******************************************
 ********* Suivi de versions **********
 ******************************************
+
+-------------------------------------------------------
+*** V 22.12 (December 2022) ***  Release for github
+-------------------------------------------------------
+
 -------------------------------------------------------
 *** V 21.6 (Juin 2021) ***
-/* NEWS 2021 by Nino85 Whitman (creator)*/
+/* NEWS 2021 by Nino85 Whitman */
 -- Cleanup page
 -- Optimize size of project
 -- Fix bugs
@@ -33,7 +38,7 @@ And more ...
 -------------------------------------------------------
 -------------------------------------------------------
 *** V 20.8 (Aout 2020) ***
-/* NEWS 2020 by Nino85 Whitman  (creator)*/
+/* NEWS 2020 by Nino85 Whitman */
 -- add TMUX command for simulator
 -- Fix bugs
 -- Add more actions, options, infos, ...
@@ -41,7 +46,7 @@ And more ...
 -------------------------------------------------------
 -------------------------------------------------------
 *** V 9.0 ***
-/* NEWS 2019 by Nino85 Whitman  (creator)*/
+/* NEWS 2019 by Nino85 Whitman */
 -- compatible PHP 7 
 -- bdd mysql format PDO
 -- Cleanup Code
@@ -51,14 +56,14 @@ And more ...
 -------------------------------------------------------
 -------------------------------------------------------
 *** V 7 ***
-/* NEWS 2017 by Nino85 Whitman  (creator)*/
+/* NEWS 2017 by Nino85 Whitman */
 -- Cleanup Code
 -- Fix bugs
 -- Add more actions, options, infos, ...
 And more ...
 -------------------------------------------------------
-*** V 5.5 ***
-/* NEWS 2015 by Nino85 Whitman (creator)*/
+*** V 5.5 *** 2015
+/* NEWS 2015 by Nino85 Whitman */
 -- Cleanup Code
 -- Fix bugs
 -------------------------------------------------------
@@ -74,7 +79,7 @@ And more ...
 -- Add more actions, options, infos, ...
 And more ...
 -------------------------------------------------------
-*** V 4 Beta *** En cours
+*** V 4 Beta *** 2014
 -- Mise à jours des SESSION
 -- Systeme d'installation intégrés **
 -- ...
@@ -84,29 +89,29 @@ And more ...
 -- Transfert des fichiers de sauvagardes vers un serveur FTP exterieur
 -- Detection des fichiers de config moteurs
 -------------------------------------------------------
-*** V 3.0 *** MISE A JOUR MAJEUR ***  2010
+*** V 3.0 *** MISE A JOUR MAJEUR ***  2013
 -- OSMW à sa propre base de donnée *** Nouveauté
 -- Les Fichiers de config , conf moteurs et users sont en BDD ( prb de sécurité !)
 -- Compte Utilisateur filtré au niveau des moteurs (choix du moteur) *** Nouveauté
 -- Verifier/ Modifier/ configurer vos INIs, opensim, grid, ... *** Nouveauté
 -- Connectivité AdmOSMW (Referencement sur le site Fgagod.net) 
 -------------------------------------------------------
-*** V 2.0 ***  
+*** V 2.0 ***   2012
 -- Optimisations du code
 -------------------------------------------------------
-*** V 1.1 ***
+*** V 1.1 *** 2011
 -- Refonte complete de l'interface
 -- Système d'installation simplifié
 -- Gestion des moteurs OpenSim, des utilisateurs et de la config en .INI
 -- ...
 --------------------------------------------------------
-*** V 1.0 ***
+*** V 1.0 *** 2010
 -- Ajout de la gestion multi-Utilisateurs dans OSMW
 --------------------------------------------------------
-*** V0.9.11 ***
+*** V0.9.11 *** 2009
 -- Authentification multi-users via fichier texte  (pas encore intégrer à OSMW)
 --------------------------------------------------------
-*** V0.7.11 ***  2077
+*** V0.7.11 ***  2007
 -- Ajouts de Fonctionnaltées;
 	-- Cartographie ajouté
 	-- TOUS demarrer et arreter d'une seule fois
