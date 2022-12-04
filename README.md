@@ -14,7 +14,11 @@ Pour Opensimulator:
 
 -------------------------------------------------------------------------------
 Configuration requise pour OpenSimulator Manager Web (OSMW):
-	--  Apache / Mysql / TMUX / LibSSH2
+- Apache (Web)
+- Mysql (bdd)
+- TMUX  (screen)
+- LibSSH2 (pour le moment, a remplacer par API)
+
 	
 Fonctionnement:
 - OSMW envoi des commandes au simulateur via Remote Admin sauf pour le START (Demarrage en console TMUX)
@@ -22,8 +26,9 @@ Fonctionnement:
 - Certains fichiers doivent avoir les droits 777 pour pouvoir etre modifier par OSMW (LINUX)
 	
 	ATTENTION aux droits d'accés aux fichiers et le format des données saisie dans vos fichiers INI
-		--> Régions.ini (droits écriture) / OpensimDefaults.ini , etc.. qui doivent etre accessible
-		--> Préférer l'utilisation de fichier de config dans addon-modules/NameGrid/config/NameGrid.ini
+		- Régions.ini (droits écriture) 
+		- OpensimDefaults.ini , etc.. qui doivent etre accessible
+		- Préférer l'utilisation des fichiers de config dans addon-modules/NameGrid/config/NameGrid.ini
 		
 Gestion des Utilisateurs:
 - 4 Niveaux d'accés sont autorisés
