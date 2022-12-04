@@ -1,0 +1,27 @@
+Install OSMW 
+=============================
+- http://domain.com/osmw/install.php
+
+More configuration
+=============================
+- inc/config.php
+
+Admin Login for new install
+=============================
+firstname = super
+lastname  = admin
+password  = password
+
+For Linux !!! prerequis !!!!
+=============================
+- tmux  
+	apt install tmux
+-lib php ssh2
+	 apt install php-ssh2
+
+Writing permission  /inc/config.php just for Installation after remove permission
+Writing permission writing for install.php and delete after installation
+Writing permission for folder files  /Regions of Opensimulator (writing Regions.ini)  
+
+
+Enjoy!

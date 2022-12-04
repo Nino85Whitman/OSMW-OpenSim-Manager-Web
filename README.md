@@ -1,2 +1,2 @@
-# OSMW
- OpenSim Manager Web
+# OpenSim-Manager-Web-V22
+ Version 2022-12
