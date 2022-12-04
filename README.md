@@ -1,0 +1,2 @@
+# OSMW
+ OpenSim Manager Web
