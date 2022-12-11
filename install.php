@@ -107,6 +107,11 @@ $userBDD = "'. $login .'";       	// login
 $passBDD  = "'. $pass .'";     	// password
 $database = "'. $base .'"; 		// Name of BDD
 
+$hostname = "ip_host";
+$usernameSSH = "user_ssh_tmux";
+$passwordSSH = "pass_user_tmux";
+
+$api_key ="";
 
 /* Position center of your MAP */
 $px = 7000;
