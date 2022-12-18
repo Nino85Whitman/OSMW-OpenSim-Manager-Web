@@ -161,7 +161,7 @@ if (isset($_SESSION['authentification']) && $_SESSION['privilege']>= 3)
 			{
 			    if ($_POST[$data['id_os']] != '')
 				{
-				    $clesprivilege = $clesprivilege.$_POST[$data['id_os']]."|";
+				    if($clesprivilege =='' ){$clesprivilege = $_POST[$data['id_os']];}else{$clesprivilege = $clesprivilege.'|'.$_POST[$data['id_os']];}
 				}
 			}
 
@@ -192,7 +192,7 @@ if (isset($_SESSION['authentification']) && $_SESSION['privilege']>= 3)
             {
                 if ($_POST[$data['id_os']] != '')
                 {
-                    $clesprivilege = $clesprivilege.'|'.$_POST[$data['id_os']];
+					if($clesprivilege =='' ){$clesprivilege = $_POST[$data['id_os']];}else{$clesprivilege = $clesprivilege.'|'.$_POST[$data['id_os']];}
                 }
             }
 
