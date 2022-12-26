@@ -40,7 +40,7 @@ CREATE TABLE `config` (
 
 LOCK TABLES `config` WRITE;
 /*!40000 ALTER TABLE `config` DISABLE KEYS */;
-INSERT INTO `config` VALUES (1,'','contact@fgagod.net',1,5,'Version 22','');
+INSERT INTO `config` VALUES (1,'/osmw/','contact@mail.com',1,5,'Version 22.12','/osmw/');
 /*!40000 ALTER TABLE `config` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -69,7 +69,7 @@ CREATE TABLE `moteurs` (
 
 LOCK TABLES `moteurs` WRITE;
 /*!40000 ALTER TABLE `moteurs` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'Super','Admin','5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8',4,'');
+INSERT INTO `moteurs` VALUES (1,'Opensim_1','FrancoGrid','Opensim 0.9.2','/OpenSimulator/opensim/','OpensimDB','hg.francogrid.org:80');
 /*!40000 ALTER TABLE `moteurs` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -97,7 +97,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'Nino85','Whitman','27eedc1e245d7253a951f5960a239661ef2556fa',4,'');
+INSERT INTO `users` VALUES (1,'Super','Admin','5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8',4,'');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
