@@ -6,40 +6,10 @@
  foreach($_SESSION as $key => $val) echo '$_SESSION["'.$key.'"]='.$val.'<br />';
 */
 
-
 /*
-// Return Ok else NOK
-//http://YOUR_OSMW_WEBSERVER/api/?api_key=API_KEY_CONFIG&opensim_select=NAME_OPENSIMULATOR&cmd=COMMANDE
-// COMMANDE FOR SIMULATOR:
-Start
-Stop
-GenerateMap
-WindlightEnable
-WindlightDisable
-WindlightLoad
-StartLogin
-StopLogin
-StatusLogin
-
-kick_user&avatar_name=AVATAR_NAME
-appearance_user&avatar_name=AVATAR_NAME
-estate_name&estate_name=ESTATE
-estate_owner&estate_owner=AVATAR_NAME
-
-//http://YOUR_OSMW_WEBSERVER/api/?api_key=API_KEY_CONFIG&opensim_select=NAME_OPENSIMULATOR&cmd_tmux=COMMANDE
-// COMMANDE FOR TMUX:
-tmux_load
-tmux_kill
-
-//http://YOUR_OSMW_WEBSERVER/api/?api_key=API_KEY_CONFIG&cmd_tmux=COMMANDE
-// COMMANDE FOR TMUX:
-tmux_load_all
-tmux_kill_all
-
 //http://YOUR_OSMW_WEBSERVER/api/?api_key=API_KEY_CONFIG&opensim_select=NAME_OPENSIMULATOR&cmd_gest=COMMANDE
-// COMMANDE DE GESTION
-list_simulateurs
-list_regions
+//http://YOUR_OSMW_WEBSERVER/api/?api_key=API_KEY_CONFIG&opensim_select=NAME_OPENSIMULATOR&cmd=COMMANDE
+//http://YOUR_OSMW_WEBSERVER/api/?api_key=API_KEY_CONFIG&opensim_select=NAME_OPENSIMULATOR&cmd_tmux=COMMANDE
 
 */
 
@@ -49,25 +19,13 @@ if ($_GET['api_key'] == $api_key || $_POST['api_key'] == $api_key)
 	$_SESSION['authentification_api'] = "autorized";
 	$opensim_select ="";
 	
-	if ($_GET['opensim_select']){$opensim_select = $_GET['opensim_select'];}
-	if ($_POST['opensim_select']){$opensim_select = $_POST['opensim_select'];}
-	
-	if ($_GET['msg_alert']){$msg_alert = $_GET['msg_alert'];}
-	if ($_POST['msg_alert']){$msg_alert = $_POST['msg_alert'];}
-	
-	if ($_GET['avatar_name']){$avatar_name = $_GET['avatar_name'];}
-	if ($_POST['avatar_name']){$avatar_name = $_POST['avatar_name'];}	
-	
-	if ($_GET['estate_name']){$estate_name = $_GET['estate_name'];}
-	if ($_POST['estate_name']){$estate_name = $_POST['estate_name'];}	
-
-	if ($_GET['estate_owner']){$estate_owner = $_GET['estate_owner'];}
-	if ($_POST['estate_owner']){$estate_owner = $_POST['estate_owner'];}
-	
-	// AJOUTER FONCTION TEST DES COMMANDEES AUTORISEES 
-	
-	// TOUT PASSE EN POST
-	
+	if ($_GET['cmd'])				{$command_execute = $_GET['cmd'];}
+	if ($_GET['opensim_select'])	{$opensim_select = $_GET['opensim_select'];}
+	if ($_GET['msg_alert'])			{$msg_alert = $_GET['msg_alert'];}
+	if ($_GET['avatar_name'])		{$avatar_name = $_GET['avatar_name'];}
+	if ($_GET['estate_name'])		{$estate_name = $_GET['estate_name'];}
+	if ($_GET['estate_owner'])		{$estate_owner = $_GET['estate_owner'];}
+	if ($_GET['Region'])			{$region = $_GET['Region'];}
 }
 else{echo "ERROR API KEY";exit;}
 
@@ -96,12 +54,12 @@ if (isset($_SESSION['authentification_api']))
 	$messageInfo = "NOK"; 
 	
 	//#################################################################################################################
-	if (isset($_GET['cmd']))
+	if (isset($command_execute))
 	{
-		if($_GET['cmd'] == 'get'){$messageInfo = "OK";}	
-		if($_GET['cmd'] == 'info'){$messageInfo = $_SERVER['SERVER_NAME'];}	
+		if($command_execute == 'get'){$messageInfo = "OK";}	
+		if($command_execute == 'info'){$messageInfo = $_SERVER['SERVER_NAME'];}	
 			
-		if($_GET['cmd'] == 'Start')	
+		if($command_execute == 'Start')	
 		{			
 			// LINUX ***********************
 			if(PHP_OS == "Linux")
@@ -111,39 +69,32 @@ if (isset($_SESSION['authentification_api']))
 				$messageInfo = "OK"; 
 			}
 		}	
-
-		if($_GET['cmd'] == 'Stop')				{
+		if($command_execute == 'Stop')				{
 			$parameters = array('command' => 'quit'); 
 			$cmd = "rm ".$data['address']."OpenSim.log";
 			CommandeSSH($hostname,$usernameSSH,$passwordSSH,$cmd);
 			$messageInfo = "OK";
 		}
 		
-		if($_GET['cmd'] == 'GenerateMap')		{$parameters = array('command' => 'generate map');}
+		if($command_execute == 'Restart')			{$parameters = array('command' => 'restart');$execute = 'OUI';}
+		if($command_execute == 'GenerateMap')		{$parameters = array('command' => 'generate map');$execute = 'OUI';}
+		if($command_execute == 'WindlightEnable')	{$parameters = array('command' => 'windlight enable');$execute = 'OUI';}
+		if($command_execute == 'WindlightDisable')	{$parameters = array('command' => 'windlight disable');$execute = 'OUI';}
+		if($command_execute == 'WindlightLoad')		{$parameters = array('command' => 'windlight load');$execute = 'OUI';}
+		if($command_execute == 'StartLogin')		{$parameters = array('command' => 'login enable');$execute = 'OUI';}
+		if($command_execute == 'StopLogin')			{$parameters = array('command' => 'login disable');$execute = 'OUI';}
+		if($command_execute == 'StatusLogin')		{$parameters = array('command' => 'login status');$execute = 'OUI';}
+		if($command_execute == 'Alerte')			{$parameters = array('command' => 'alert '.$msg_alert);$execute = 'OUI';}
+		if($command_execute == 'Kick_User')			{$kick = 'kick user '.$avatar_name.' ejected by administrator.' ; $parameters = array('command' =>  $kick );$execute = 'OUI';}
+		if($command_execute == 'Appearance_User')	{$appearance = 'appearance show '.$avatar_name ; $parameters = array('command' =>  $appearance );$execute = 'OUI';}
+		if($command_execute == 'Estate_NameSet')	{$estate = 'estate set name 101 '.$estate_name ; $parameters = array('command' => $estate );$execute = 'OUI';}
+		if($command_execute == 'Estate_OwnerSet')	{$estate = 'estate set owner 101 '.$estate_owner ; $parameters = array('command' => $estate );$execute = 'OUI';}
+		if($command_execute == 'Region_Selected')	{$change_region = 'change region "'.$region.'"';$parameters = array('command' => $change_region);$execute = 'OUI';}
 		
-		if($_GET['cmd'] == 'WindlightEnable')	{$parameters = array('command' => 'windlight enable');}
-		if($_GET['cmd'] == 'WindlightDisable')	{$parameters = array('command' => 'windlight disable');}
-		if($_GET['cmd'] == 'WindlightLoad')		{$parameters = array('command' => 'windlight load');}
+		if($command_execute=='ReloadEstate')		{$myRemoteAdmin = new RemoteAdmin(trim($hostname), trim($RemotePort), trim($access_password2)); $myRemoteAdmin->SendCommand('admin_estate_reload',  array());$messageInfo = "OK";}	
 
-		if($_GET['cmd'] == 'StartLogin')		{$parameters = array('command' => 'login enable');}
-		if($_GET['cmd'] == 'StopLogin')			{$parameters = array('command' => 'login disable');}
-		if($_GET['cmd'] == 'StatusLogin')		{$parameters = array('command' => 'login status');}
-		
-		if($_GET['cmd'] == 'Alerte')			{$parameters = array('command' => 'alert '.$msg_alert);}
-		if($_GET['cmd'] == 'kick_user')			{$kick = 'kick user '.$avatar_name.' ejected by administrator.' ; $parameters = array('command' =>  $kick );}
-		if($_GET['cmd'] == 'appearance_user')	{$appearance = 'appearance show '.$avatar_name ; $parameters = array('command' =>  $appearance );}
-
-		//if($_POST['cmd'] == 'estate_name')		{echo $estate_cmd = 'estate set name 101 "'.$estate_name.'"' ; $parameters = array('command' => $estate_cmd );}
-		//if($_POST['cmd'] == 'estate_owner')		{echo $estate_cmd = 'estate set owner 101 '.$estate_owner ; $parameters = array('command' => $estate_cmd );}
-			
-			echo $estate_cmd;
-			
-		if($_GET['cmd']=='ReloadEstate')	
-		{
-			$myRemoteAdmin = new RemoteAdmin(trim($hostname), trim($RemotePort), trim($access_password2));
-			$myRemoteAdmin->SendCommand('admin_estate_reload',  array());
-		}		
-		else
+		//***********************************************************
+		if($execute == 'OUI')
 		{
 			$myRemoteAdmin = new RemoteAdmin(trim($hostname), trim($RemotePort), trim($access_password2));
 			$retour_radmin = $myRemoteAdmin->SendCommand('admin_console_command', $parameters);
